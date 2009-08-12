@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:map="ui.*" 
+	layout="absolute"
+	creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			private function init():void {
+				//Security.allowDomain("*");
+				Alert.show("loaded");
+			}
+		]]>
+	</mx:Script>	
+	
+	<map:MapViewer			
+		width="300" 
+		height="300"	 	
+		/>
+		
+</mx:Application>

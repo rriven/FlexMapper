@@ -93,6 +93,15 @@ package ui
 			addChild(map);
 		}
 		
+		public function start(interval:Number):void {
+			_timer.delay = interval;
+			_timer.start();
+		}
+		
+		public function stop():void {
+			_timer.stop()
+		}
+		
 		private function handleTimer():void {
 			var overlays:Array = map.getOverlays();
 			if (overlays) {

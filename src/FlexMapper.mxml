@@ -157,6 +157,14 @@
 					mapContainer.internalMap.setSize(mapContainer.width, mapContainer.height);
 				}
 			}		
+			
+			private function handleAutoReload():void {
+				if (reload.selected) {
+					mapContainer.start((interval.text as Number) * 1000);
+				} else {
+					mapContainer.stop();
+				}
+			}
             
 		]]>
 	</mx:Script>	
@@ -178,6 +186,8 @@
 			</mx:Parallel>
 		</mx:Transition>
 	</mx:transitions>
+	
+	<mx:NumberValidator id="intVal" domain="int" minValue="15" source="{interval}" property="text" />
 	
 	<mx:Canvas
 		verticalScrollPolicy="off"
@@ -226,14 +236,14 @@
 							   description="Automatically refresh data.">
 					<mx:Form>
 						<mx:FormItem>
-							<mx:CheckBox label="Enable auto reload" change="{interval.enabled ? interval.enabled = false : interval.enabled = true}" />
+							<mx:CheckBox id="reload" label="Enable auto reload" change="{interval.enabled ? interval.enabled = false : interval.enabled = true}" />
 						</mx:FormItem>
 						<mx:FormItem label="Interval:">
 							<flexlib:PromptingTextInput id="interval" prompt="Seconds" width="50" enabled="false"/>
 						</mx:FormItem>
 					</mx:Form>
 					<mx:HBox horizontalAlign="right" width="100%" paddingRight="5">
-						<mx:Button label="Apply" />
+						<mx:Button label="Apply" click="handleAutoReload()" />
 					</mx:HBox>					
 				</AccordionItem> 
 			</flexlib:VAccordion>

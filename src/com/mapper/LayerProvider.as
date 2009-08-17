@@ -7,6 +7,7 @@ package com.mapper
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	
+	import mx.controls.Alert;
 	import mx.core.Application;
 	
 	
@@ -29,8 +30,16 @@ package com.mapper
 		}
 		
 		private function dispatchData(event:Event):void {
-			var _loader:URLLoader = URLLoader(event.target);
-			dispatchEvent(new LoadEvent("load", false, false, JSON.decode(loader.data)));				
+			var _loader:URLLoader = URLLoader(event.target);			
+			var data:* = loader.data;
+			Alert.show(data);
+			var decoded:*;
+			try {
+				decoded = JSON.decode(data); 
+			} catch (error:Error) {
+				Alert.show(error.message, "Error: " + error.errorID);
+			}
+			dispatchEvent(new LoadEvent("load", false, false, decoded));				
 		}
 		
 	}

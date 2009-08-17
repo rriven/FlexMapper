@@ -96,16 +96,16 @@ package ui
 		public function start(interval:Number):void {
 			_timer.delay = interval;
 			_timer.start();
-			Alert.show("Reload timer started at " + interval + " milliseconds");
+			//Alert.show("Reload timer started at " + interval + " milliseconds");
 		}
 		
 		public function stop():void {
 			_timer.stop()
-			Alert.show("Reload timer stopped");
+			//Alert.show("Reload timer stopped");
 		}
 		
 		private function handleTimer(event:TimerEvent):void {
-			Alert.show("Reloading layers");
+			//Alert.show("Reloading layers");
 			var overlays:Array = map.getOverlays();
 			if (overlays) {
 				if (overlays.length > 0) {
@@ -114,7 +114,7 @@ package ui
 							var kmlOverlay:KMLLayer = overlay as KMLLayer;
 							try {
 								var url:String = generateUrl(kmlOverlay.url);
-								Alert.show("Reloading [" + kmlOverlay.name + "] pointed at [" + url + "]");
+								//Alert.show("Reloading [" + kmlOverlay.name + "] pointed at [" + url + "]");
 								kmlOverlay.load(url);
 							} catch (error:Error) {
 								Alert.show(error.message, "Reload Error: " + error.errorID);

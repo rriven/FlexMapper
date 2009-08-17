@@ -45,7 +45,7 @@ package ui
 				var provider:WMSTileProvider = new WMSTileProvider();
 
 				var geoBase:String = application.parameters.geoprotocol + "://" + application.parameters.geoserver + ":" + 
-				application.parameters.geoport + "/wms"
+				application.parameters.geoport + "/" + application.parameters.geocontext + "/wms"
 						
 				var mapType:MapType = new MapType("Raster", 0x0, 0xFF0000, "Raster", "uhoh");									
 				mapType.addLayer(new WMSTileLayer(geoBase, "bcip_raster", "", "", ""));

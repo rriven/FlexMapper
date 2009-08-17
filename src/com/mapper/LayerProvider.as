@@ -25,8 +25,12 @@ package com.mapper
 		}
 		
 		public function getLayers():void {
-			loader.load(new URLRequest(application.parameters.protocol + "://" + application.parameters.server + ":" + 
-				application.parameters.port + "/" + application.parameters.context + "/instance/layers/" + application.parameters.instance));
+			try {
+				loader.load(new URLRequest(application.parameters.protocol + "://" + application.parameters.server + ":" + 
+					application.parameters.port + "/" + application.parameters.context + "/instance/layers/" + application.parameters.instance));
+			} catch (error:Error) {
+				Alert.show(error.message, "Error: " + error.errorID);
+			}
 		}
 		
 		private function dispatchData(event:Event):void {

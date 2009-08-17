@@ -47,13 +47,13 @@ package ui
 				var geoBase:String = application.parameters.geoprotocol + "://" + application.parameters.geoserver + ":" + 
 				application.parameters.geoport + "/" + application.parameters.geocontext + "/wms"
 						
-				var mapType:MapType = new MapType("Raster", 0x0, 0xFF0000, "Raster", "uhoh");									
-				mapType.addLayer(new WMSTileLayer(geoBase, "bcip_raster", "", "", ""));
-				provider.addMapType(mapType);
-				
-				mapType = new MapType("Vector", 0x0, 0xFF0000, "Vector", "nooooooooo");
-				mapType.addLayer(new WMSTileLayer(geoBase, "bcip_vector", "", "", ""));
-				provider.addMapType(mapType);									
+				var mapType:MapType ;//= new MapType("Raster", 0x0, 0xFF0000, "Raster", "uhoh");									
+//				mapType.addLayer(new WMSTileLayer(geoBase, "bcip_raster", "", "", ""));
+//				provider.addMapType(mapType);
+//				
+//				mapType = new MapType("Vector", 0x0, 0xFF0000, "Vector", "nooooooooo");
+//				mapType.addLayer(new WMSTileLayer(geoBase, "bcip_vector", "", "", ""));
+//				provider.addMapType(mapType);									
 
 				mapType = new MapType("Korea", 0x0, 0xFF0000, "Korea", "kowa");
 				mapType.addLayer(new WMSTileLayer(geoBase, "netcds-korea", "image/png", "", ""));

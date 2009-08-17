@@ -105,6 +105,7 @@ package ui
 		}
 		
 		private function handleTimer():void {
+			Alert.show("Reloading layers");
 			var overlays:Array = map.getOverlays();
 			if (overlays) {
 				if (overlays.length > 0) {
@@ -112,7 +113,7 @@ package ui
 						if (overlay.visible) {
 							var kmlOverlay:KMLLayer = overlay as KMLLayer;
 							try {
-								var url = generateUrl(kmlOverlay.url);
+								var url:String = generateUrl(kmlOverlay.url);
 								Alert.show("Reloading [" + kmlOverlay.name + "] pointed at [" + url + "]");
 								kmlOverlay.load(url);
 							} catch (error:Error) {

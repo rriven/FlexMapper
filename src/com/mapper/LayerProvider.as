@@ -28,7 +28,6 @@ package com.mapper
 			try {
 				var url:String = application.parameters.protocol + "://" + application.parameters.server + ":" + 
 					application.parameters.port + "/" + application.parameters.context + "/instance/layers/" + application.parameters.instance;
-				Alert.show(url);
 				loader.load(new URLRequest(url));
 			} catch (error:Error) {
 				Alert.show(error.message, "Error: " + error.errorID);
@@ -38,7 +37,6 @@ package com.mapper
 		private function dispatchData(event:Event):void {
 			var _loader:URLLoader = URLLoader(event.target);			
 			var data:* = loader.data;
-			Alert.show(data);
 			var decoded:*;
 			try {
 				decoded = JSON.decode(data); 

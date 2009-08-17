@@ -67,7 +67,7 @@ package ui
 
 				layers.getLayers();
 				
-				addChild(map);
+				//addChild(map);
 			}
 			
 			if (!_timer) {
@@ -90,6 +90,7 @@ package ui
 					map.addOverlay(kml);
 				}
 			}
+			addChild(map);
 		}
 		
 		private function handleTimer():void {

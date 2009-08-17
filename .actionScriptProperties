@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionScriptProperties mainApplicationPath="FlexMapper.mxml" projectUUID="580b1faa-48f8-4084-a350-c5b75faf0cfd" version="6">
+  <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" flexSDK="Flex 3.4" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersionCheck="true" includeNetmonSwc="true" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+    <compilerSourcePath/>
+    <libraryPath defaultLinkType="0">
+      <libraryPathEntry kind="4" path=""/>
+      <libraryPathEntry kind="1" linkType="1" path="libs"/>
+    </libraryPath>
+    <sourceAttachmentPath/>
+  </compiler>
+  <applications>
+    <application path="FlexMapper.mxml"/>
+  </applications>
+  <modules>
+    <module application="src/FlexMapper.mxml" destPath="Header.swf" optimize="true" sourcePath="src/Header.mxml"/>
+  </modules>
+  <buildCSSFiles/>
+</actionScriptProperties>

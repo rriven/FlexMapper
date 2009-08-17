@@ -25,7 +25,7 @@ package com.mapper
 		
 		public function getLayers():void {
 			loader.load(new URLRequest(application.parameters.protocol + "://" + application.parameters.server + ":" + 
-				application.parameters.port + "/" + application.parameters.context + "/instance/" + application.parameters.instance + "/layers"));
+				application.parameters.port + "/" + application.parameters.context + "/instance/layers/" + application.parameters.instance));
 		}
 		
 		private function dispatchData(event:Event):void {

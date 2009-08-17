@@ -26,8 +26,10 @@ package com.mapper
 		
 		public function getLayers():void {
 			try {
-				loader.load(new URLRequest(application.parameters.protocol + "://" + application.parameters.server + ":" + 
-					application.parameters.port + "/" + application.parameters.context + "/instance/layers/" + application.parameters.instance));
+				var url:String = application.parameters.protocol + "://" + application.parameters.server + ":" + 
+					application.parameters.port + "/" + application.parameters.context + "/instance/layers/" + application.parameters.instance;
+				Alert.show(url);
+				loader.load(new URLRequest(url));
 			} catch (error:Error) {
 				Alert.show(error.message, "Error: " + error.errorID);
 			}
@@ -43,7 +45,7 @@ package com.mapper
 			} catch (error:Error) {
 				Alert.show(error.message, "Error: " + error.errorID);
 			}
-			dispatchEvent(new LoadEvent("load", false, false, decoded));				
+			dispatchEvent(new LoadEvent("load", true, false, decoded));				
 		}
 		
 	}

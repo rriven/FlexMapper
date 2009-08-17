@@ -96,10 +96,12 @@ package ui
 		public function start(interval:Number):void {
 			_timer.delay = interval;
 			_timer.start();
+			Alert.show("Reload timer started at " + interval + " milliseconds");
 		}
 		
 		public function stop():void {
 			_timer.stop()
+			Alert.show("Reload timer stopped");
 		}
 		
 		private function handleTimer():void {
@@ -110,7 +112,9 @@ package ui
 						if (overlay.visible) {
 							var kmlOverlay:KMLLayer = overlay as KMLLayer;
 							try {
-								kmlOverlay.load(generateUrl(kmlOverlay.url));
+								var url = generateUrl(kmlOverlay.url);
+								Alert.show("Reloading [" + kmlOverlay.name + "] pointed at [" + url + "]");
+								kmlOverlay.load(url);
 							} catch (error:Error) {
 								Alert.show(error.message, "Reload Error: " + error.errorID);
 							}

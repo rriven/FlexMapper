@@ -104,7 +104,7 @@ package ui
 			Alert.show("Reload timer stopped");
 		}
 		
-		private function handleTimer():void {
+		private function handleTimer(event:TimerEvent):void {
 			Alert.show("Reloading layers");
 			var overlays:Array = map.getOverlays();
 			if (overlays) {

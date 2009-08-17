@@ -159,8 +159,8 @@
 			}		
 			
 			private function handleAutoReload():void {
-				if (reload.selected) {
-					mapContainer.start((interval.text as Number) * 1000);
+				if (reload.selected) {					
+					mapContainer.start(new Number(interval.text) * 1000);
 				} else {
 					mapContainer.stop();
 				}

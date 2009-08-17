@@ -1,23 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application 
+<mx:Application  
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:map="ui.*" 
+	xmlns="*" 
+	xmlns:container="com.arc90.flexlib.containers.*"
+	xmlns:flexlib="http://code.google.com/p/flexlib/"
+	xmlns:filters="flash.filters.*"
 	layout="absolute"
 	creationComplete="init()">
+	
+	<mx:Style>
+		Application {
+			backgroundGradientColors: #FFFFFF, #FFFFFF;
+			backgroundGradientAlphas: 1, 1;
+			vertical-align: middle;
+			horizontal-align: center;
+		}
+		
+		VAccordion {
+			headerHeight: 80;
+			vertical-gap: 5;
+			background-alpha:0;
+			open-duration:500;
+			border-style:none;
+			padding-bottom:5;
+			header-style-name: gradientHeader;
+		}
+		
+		.gradientHeader {
+			upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			font-family:Arial;
+			cornerRadii: 0, 0, 10, 10;
+			borderColors: #FFFFFF, #FFFFFF;
+			overBorderColors: #FFFFFF, #FFFFFF;
+			selectedBorderColors: #FFFFFF, #FFFFFF;
+			borderThickness: 2;
+			borderAlpha: 1;
+			fillColors: #FFFFFF, #FFFFFF;
+			fillAlphas: 1, 1;
+			fillColorRatios: 0, 255;
+			overFillColors: #FFFFFF, #BAC2CF;
+			overFillAlphas: 1, 1;
+			overFillColorRatios: 0, 169;
+			selectedFillColors: #FFFFFF, #BAC2CF;
+			selectedFillAlphas: 1,1;
+			selectedFillColorRatios: 0, 169;
+		}
+			
+		.toggleButton {
+			upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			borderStyle: solid;
+			borderColor: #b7babc;
+			corner-radius:10;
+			borderAlpha: 1;
+			roundedBottomCorners: true;
+			headerHeight: 24;
+			highlightAlphas: 0, 0;
+			headerColors: #b1b7c4, #8392ab;
+			border-thickness-left:1;
+			border-thickness-right:1;
+			border-thickness-top:0;
+			border-thickness-bottom:-5;
+			border-thickness:1;  
+		}
+			
+		.toggleButtonClosed {
+			upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+			borderStyle: solid;
+			borderColor: #b7babc;
+			corner-radius:10;
+			borderAlpha: 1;
+			roundedBottomCorners: true;
+			headerHeight: 24;
+			highlightAlphas: 0, 0;
+			headerColors: #b1b7c4, #8392ab;
+			border-thickness-left:1;
+			border-thickness-right:1;
+			border-thickness-top:0;
+			border-thickness-bottom:-5;
+			border-thickness:1;  
+		}		
+					
+		Panel {
+			borderStyle: solid;
+			borderColor: #b7babc;
+			corner-radius:10;
+			borderAlpha: 1;
+			roundedBottomCorners: true;
+			headerHeight: 24;
+			highlightAlphas: 0, 0;
+			headerColors: #b1b7c4, #8392ab;
+			titleStyleName: "mypanelTitle";
+			border-thickness-left:1;
+			border-thickness-right:1;
+			border-thickness-top:0;
+			border-thickness-bottom:-5;
+			border-thickness:1;   
+		}
+		
+		.mypanelTitle {
+			color: #ffffff;
+			fontSize: 12;
+		}
+
+		.outerCanvas {
+			borderStyle: solid;
+			borderColor: #b7babc;
+			corner-radius:10;
+			borderAlpha: 1;
+			roundedBottomCorners: true;
+			highlightAlphas: 0, 0;
+			border-thickness-left:1;
+			border-thickness-right:1;
+			border-thickness-top:0;
+			border-thickness-bottom:-5;
+			border-thickness:1;  
+         	padding-top:10;
+            padding-left:10;
+            padding-right:10;
+            vertical-gap:0;
+		}		
+	</mx:Style>
 	
 	<mx:Script>
 		<![CDATA[
 			import mx.controls.Alert;
+			
 			private function init():void {
 				//Security.allowDomain("*");
-				Alert.show("loaded");
+				resizeMap();
 			}
+			
+			private function resizeMap():void {
+				if (mapContainer.internalMap != null) {
+					mapContainer.internalMap.setSize(mapContainer.width, mapContainer.height);
+				}
+			}		
+            
 		]]>
 	</mx:Script>	
 	
-	<map:MapViewer			
-		width="300" 
-		height="300"	 	
-		/>
+	<mx:states>
+		<mx:State name="closed">
+			<mx:RemoveChild target="{content}"/>
+			<mx:SetStyle target="{vbox1}" name="left" value="0"/>
+			<mx:SetEventHandler target="{btn}" name="mouseOver" handler="currentState=''"/>
+			<mx:SetProperty target="{btn}" name="label" value="&gt;"/>
+			<mx:SetProperty target="{btn}" name="styleName" value="toggleButtonClosed"/>
+		</mx:State>
+	</mx:states>
+	<mx:transitions>
+		<mx:Transition id="myTransition" fromState="*" toState="*">
+			<mx:Parallel id="t1" targets="{[content,btn]}">
+				<mx:Move duration="400"/>
+				<mx:Resize duration="400"/>
+			</mx:Parallel>
+		</mx:Transition>
+	</mx:transitions>
+	
+	<mx:Canvas
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"		
+		resize="resizeMap()"
+		styleName="outerCanvas"
+		width="100%"
+		height="100%">
+		<map:MapperContainer id="mapContainer" mask="{mapmask}" width="100%" height="100%" />
+		<mx:Canvas
+			backgroundColor="#555555"
+			id="mapmask"
+			width="100%"
+			height="100%" /> 
+		<mx:Panel id="content" title="Configuration" width="50%" height="100%" backgroundColor="white">
+			<flexlib:VAccordion id="accordion" 
+								headerLocation="below" width="100%" 
+								resizeToContent="true" headerRenderer="Header" >
+				<AccordionItem title="Overlays" 							   
+							   description="KML layers">
+					<mx:List dataProvider="{mapContainer.internalMap.getOverlays()}" width="100%" labelField="name" borderThickness="0">
+						<mx:itemRenderer>
+							<mx:Component>
+								<mx:CheckBox selectedField="visible" change="onChange(event);">
+									<mx:Script>
+										<![CDATA[
+											import mx.controls.Alert;
+			   								
+			   								private function onChange(evt:Event):void {
+												data.visible = !data.visible;
+												if (data.visible) {
+													data.show();
+												} else {
+													data.hide();
+												}												
+											}
+			   								
+			   							]]>
+									</mx:Script>
+								</mx:CheckBox>
+							</mx:Component>
+						</mx:itemRenderer>
+					</mx:List>
+				</AccordionItem>
+				<AccordionItem title="Auto Reload"
+							   description="Automatically refresh data.">
+					<mx:Form>
+						<mx:FormItem>
+							<mx:CheckBox label="Enable auto reload" change="{interval.enabled ? interval.enabled = false : interval.enabled = true}" />
+						</mx:FormItem>
+						<mx:FormItem label="Interval:">
+							<flexlib:PromptingTextInput id="interval" prompt="Seconds" width="50" enabled="false"/>
+						</mx:FormItem>
+					</mx:Form>
+					<mx:HBox horizontalAlign="right" width="100%" paddingRight="5">
+						<mx:Button label="Apply" />
+					</mx:HBox>					
+				</AccordionItem> 
+			</flexlib:VAccordion>
+		</mx:Panel>
+		<mx:VBox 
+			y="0" 
+			height="100%" 
+			left="31%" 
+			id="vbox1"
+			verticalAlign="top">
+			<mx:Button 
+				label="&lt;" 
+				mouseOver="currentState='closed'"
+				id="btn" 
+				toggle="true" 
+				height="25" 
+				width="10" 
+				fontSize="9"
+				styleName="toggleButton" 
+				cornerRadius="0" 
+				textIndent="0" 
+				paddingLeft="0" 
+				paddingRight="0" 
+				paddingBottom="0" 
+				paddingTop="0" 
+				letterSpacing="0"/>
+		</mx:VBox>
 		
+		<mx:filters>
+			<filters:DropShadowFilter angle="90" alpha=".1" blurX="0" distance="3" />	
+		</mx:filters>
+	</mx:Canvas>
+	
 </mx:Application>

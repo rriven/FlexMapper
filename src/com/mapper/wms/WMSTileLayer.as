@@ -5,9 +5,8 @@
  * Original is loosely based on WMS Example posted by (jatorre) on UMap forums.
  * -----------------------------------------------------------------------
  */ 
-package map
+package com.mapper.wms
 {
-	import com.afcomponents.umap.overlays.Layer;
    import com.afcomponents.umap.providers.TileLayer;
    import osgb.OSGBLLHelper;
    

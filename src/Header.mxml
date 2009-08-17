@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CanvasButtonAccordionHeader 
+    xmlns="flexlib.containers.accordionClasses.*" 
+    xmlns:mx="http://www.adobe.com/2006/mxml"
+    xmlns:filters="flash.filters.*"
+    verticalScrollPolicy="off" horizontalScrollPolicy="off"
+    mouseOver="fakeMouseClick(event)">
+    
+    <mx:Script>
+        <![CDATA[
+            /**
+             * This gets called for every MOUSE_OVER event. All we do is dispatch a CLICK event
+             * and we can trick the Accordion into thinking the header was clicked.
+             */
+            private function fakeMouseClick(event:MouseEvent):void {
+                var clickEvent:MouseEvent = new MouseEvent(MouseEvent.CLICK, true, false, event.localX, event.localY);
+                dispatchEvent(clickEvent);
+            }
+        ]]>
+    </mx:Script>
+    
+    <mx:Style>
+        .mainBox {
+            padding-top:10;
+            padding-left:10;
+            padding-right:10;
+            vertical-gap:0;    
+        }
+        
+        .title {
+            font-weight: bold;
+            color: #333333;
+            font-size: 16;    
+        }
+        
+        .description {
+            font-weight: normal;
+            color: #666666;
+            font-size: 12;    
+        }
+    </mx:Style>
+    
+    
+    <mx:VBox styleName="mainBox" width="100%" height="100%">
+        
+        <mx:Label text="{data.title}" styleName="title"
+            width="100%" />
+        
+        <mx:Text text="{data.description}" styleName="description"
+            width="100%" height="100%" 
+            selectable="false" />
+            
+    </mx:VBox>
+    
+    <filters>
+        <filters:DropShadowFilter angle="90" alpha=".1" blurX="0" distance="3" />
+    </filters>
+    
+</CanvasButtonAccordionHeader>

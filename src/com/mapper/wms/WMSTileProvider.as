@@ -3,9 +3,9 @@
  * WMS Custom Tile Provider for UMap
  * -----------------------------------------------------------------------
  */
-package map
+package com.mapper.wms
 {
-    import com.afcomponents.umap.providers.DefaultProvider;
+	import com.afcomponents.umap.providers.DefaultProvider;
     
     /**
      * WMSTileProvider custom class.
@@ -20,9 +20,10 @@ package map
             this.copyright = copyright;
         }
         
-        override public function getDefaultCopyright():String
-        {
-            return copyright;
+        
+        override public function getDefaultCopyright() : String {
+        	return this.copyright;
         }
+        
     }
 }
